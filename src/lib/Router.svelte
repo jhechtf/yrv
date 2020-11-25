@@ -18,6 +18,7 @@
   export let path = '/';
   export let disabled = false;
   export let condition = null;
+  export let pending = null;
 
   // IF DEBUG
   export let nofallback = false;
@@ -92,6 +93,7 @@
     basePath,
     assignRoute,
     unassignRoute,
+    pending,
   });
 
   $: if (condition) {

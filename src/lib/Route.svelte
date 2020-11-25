@@ -25,7 +25,7 @@
   const routeContext = getContext(CTX_ROUTE);
   const routerContext = getContext(CTX_ROUTER);
 
-  const { assignRoute, unassignRoute } = routerContext || {};
+  const { assignRoute, unassignRoute, pending: routerPending } = routerContext || {};
 
   const routePath = routeContext ? routeContext.routePath : writable(path);
 
@@ -128,6 +128,8 @@
     {#if pending}
       {#if isSvelteComponent(pending)}
         <svelte:component this={pending} router={activeRouter} {...activeProps} />
+      {:else if isSvelteComponent(routerPending)}
+        <svelte:component this={routerPending} router={activeRouter} {...activeProps} />
       {:else}
         {pending}
       {/if}
